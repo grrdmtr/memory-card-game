@@ -2,7 +2,7 @@ import './App.css'
 import Card from './components/Card'
 import { useState } from 'react'
 
-const pokemons = ['pikachu', 'charizard', 'mewtwo', 'eevee', 'blastoise', 'pidgey', 'clefairy', 'ninetales', 'jigglypuff', 'meowth'];
+const pokemons = ['pikachu', 'charizard', 'mewtwo', 'eevee', 'blastoise', 'pidgey', 'clefairy', 'ninetales', 'jigglypuff', 'meowth', 'bulbasaur', 'charmander'];
 
 function App() {
   const [count, setCount] = useState(0);
@@ -47,8 +47,10 @@ function App() {
     <>
         <header>
           <h3>Pokemon Memory game - Get points by clicking on an image but do not click on any more than once!</h3>
-          <span>Score: {count}. </span>
-          <span>Best score: {bestScore}</span>
+          <div className="score">
+            <span>Score: {count}</span>
+            <span>Best score: {bestScore}</span>
+          </div>
         </header>
         <div className="card-grid">
           {pokemonList.map((pokemon, index) => {

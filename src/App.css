@@ -36,12 +36,6 @@
   border: 10px solid #fae279;
   border-radius: 25px;
   width: 200px;
-  aspect-ratio: 5/7;
-  background-color: white;
-}
-
-.imgContainer {
-  border: 3px solid #c2c2c2;
   background-image: linear-gradient(to right, rgb(255, 255, 228), rgb(255, 237, 133));
 }
 
@@ -66,4 +60,10 @@ img {
 
 header {
   color: white;
+}
+
+.score {
+  padding: 0 0 23px 0;
+  display: flex;
+  justify-content: space-around;
 }
