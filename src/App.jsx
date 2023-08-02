@@ -7,16 +7,28 @@ const pokemons = ['pikachu', 'charizard', 'mewtwo', 'eevee', 'blastoise', 'pidge
 function App() {
   const [count, setCount] = useState(0);
   const [pokemonList, setPokemonList] = useState(pokemons)
+  const [moves, setMoves] = useState([])
+  const [bestScore, setBestScore] = useState(0)
 
-  const handleCount = () => {
-    setCount(count + 1);
+  const handleGame = (e, pokemon) => {
+    if (!moves.includes(pokemon) || !moves) {
+      setMoves([...moves, pokemon]);
+      setCount(count + 1);
+    } else {
+      setCount(0);
+      setMoves([])
+      if (count > bestScore) {
+        setBestScore(count)
+      }
+    }
     handlePokemonList();
+    
   }
   
   const handlePokemonList = () => {
     let array = pokemonList;
     let currentIndex = array.length,  randomIndex;
-    
+
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
 
@@ -35,13 +47,15 @@ function App() {
     <>
         <header>
           <h3>Pokemon Memory game - Get points by clicking on an image but do not click on any more than once!</h3>
-          <span>Score: {count}</span>
+          <span>Score: {count}. </span>
+          <span>Best score: {bestScore}</span>
         </header>
         <div className="card-grid">
           {pokemonList.map((pokemon, index) => {
               return <button key={index}
-                             onClick={handleCount}>
-                       <Card name={pokemon} />
+                             onClick={(e) => handleGame(e, pokemon)}>
+                       <Card name={pokemon} 
+                             key={index}/>
                      </button>
           })}
         </div>
