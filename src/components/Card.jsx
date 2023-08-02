@@ -16,7 +16,7 @@ function Card({name}) {
 
   useEffect(() => {
     fetchPokemonData()
-  }, [pokemon])
+  })
 
   const src = `https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
 
@@ -34,5 +34,4 @@ export default Card
 
 Card.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
 };
